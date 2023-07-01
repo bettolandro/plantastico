@@ -1,0 +1,26 @@
+{% load static %}
+
+
+<html>
+<head>
+    <link href="{% static 'bootstrap.min.css' %}" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
+        <div class="container-fluid">
+            <span class="navbar-text">
+              Lista de usuarios registrados 
+            </span>
+          </div>
+      </nav>
+    
+    <ul>
+        {% for usuario in lista_usuarios  %}
+            <li> {{usuario.correo}} - {{ usuario.nombre }} {{usuario.apellido}} </li>
+        {% endfor %}
+
+    </ul>
+        
+        <script src="{% static 'bootstrap.bundle.min.js' %}"></script>
+    </body>
+</html>

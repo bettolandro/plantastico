@@ -1,0 +1,184 @@
+{% load static %}
+{% load bootstrap4 %}
+
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link href="{% static 'bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'style.css' %}" rel="stylesheet">
+        <link href="{% static 'bootstrap-icons.css' %}" rel="stylesheet">
+        <title>Carrito - Plantástico</title>
+        <link rel="icon" href="{% static 'assets/logo.png' %}" type="image/x-icon">
+    </head>
+
+    <body>     
+        <!--Navbar-->
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'index' %}"><h3><img src="{% static 'assets/logo.png' %}" alt="Logo" class="tamannio_logo">Plantástico</h3></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="donacion">Donaciones</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="..." role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Productos
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="plantas">Plantas</a></li>
+                                <li><a class="dropdown-item" href="maceteros">Maceteros</a></li>
+                                <li><a class="dropdown-item" href="accesorios">Accesorios</a></li>
+                                <li><a class="dropdown-item" href="productos">Ver todo</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <!--Cerrar Sesión-->
+                        <a href="{% url 'index' %}" class="btn"><h3><i class="bi bi-door-closed"></i></h3></a>
+                        <br>
+                        <!--Carrito de compras-->
+                        <a href="carrito" class="btn"><h3><i class="bi bi-cart3"></i></h3></a>
+                        <br>  
+                        <!--Inicio de sesión-->  
+                        <button type="button" class="btn btn-outline-success" onclick="window.location.href = 'iniciosesion';" data-bs-toggle="modal" data-bs-target="" style="margin-right: 2%;">
+                            <i class="bi bi-person-circle"></i> Hola @usuario!
+                        </button>
+                        
+                            <!--API creación de producto-->
+                        <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
+                        data-bs-target="#mdl_creaProducto">
+                        <i class="bi bi-bag-plus-fill"></i> Ingresar nuevo producto
+                        </button>
+                    </form>
+                </div>
+            </div>  
+        </nav>  
+        <!--Datos del usuario-->
+        
+        <!--API generaCodigo-->
+        <br>
+        <div class="formulario" id="div_codigo">
+            <div>
+                <div class="mb-3">
+                    <p class="alert alert-warning" role="alert" id="div_validacion4"></p>  
+                    <label for="idcorreoCompra" class="form-label">Ingresa tu correo electrónico: </label>
+                    <input type="email" class="form-control" id="idcorreoCompra">
+                </div>  
+                    <button type="button" id="btn_generaCodigo" class="btn btn-success mx-auto d-block" onclick="generaCodigo()">
+                        Generar código de compra
+                    </button>
+            </div>
+            <div>
+                <br>
+            </div>
+        </div>
+        
+            
+        <!--API Almacenaproducto-->
+        <br>
+        <div class="formulario" id="div_compra">
+            <div>
+            <div class="mb-3">
+                <label for="idcodigocompra" class="form-label">Ingresa tu código de compra: </label>
+                <input type="text" class="form-control" id="idcodigocompra">
+            </div>
+            <div class="mb-3">
+                <label for="idcodproducto" class="form-label">Ingresa el código del producto: </label>
+                <input type="text" class="form-control" id="idcodproducto">
+            </div>
+            <div class="mb-3">
+                <label for="idcantidadproducto" class="form-label">Ingresa la cantidad de productos: </label>
+                <input type="number" class="form-control" id="idcantidadproducto">
+            </div>  
+            <button type="button" id="btn_generaCodigo" class="btn btn-success mx-auto d-block" onclick="almacenaProducto()">
+                Agregar producto al carrito
+            </button>
+            </div>
+            <div>
+            <br>
+            </div>
+        </div>
+        
+        <div class="mb-3">
+            <button type="button" id="btn_generaCodigo" class="btn btn-success mx-auto d-block" onclick="window.location.href = 'compralista';">
+            Finalizar compra
+            </button>
+        </div>
+                
+    
+        <!--Modal crear producto-->
+        <br>
+        <div class="modal fade" id="mdl_creaProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Crear producto</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal-body">
+                            <p class="alert alert-warning" role="alert" id="div_validacion3"></p>
+                            <div class="mb-3">
+                                <label for="idcodigo" class="form-label">Código</label>
+                                <input type="text" class="form-control" id="idcodigo">
+                            </div>
+                            <div class="mb-3">
+                                <label for="idnomproduc" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="idnomproduc">
+                            </div>
+                            <div class="mb-3">
+                                <label for="iddescripcion" class="form-label">Descripción</label>
+                                <input type="text" class="form-control" id="iddescripcion">
+                            </div>
+                            <div class="mb-3">
+                                <label for="idprecio" class="form-label">Precio</label>
+                                <input type="number" class="form-control" id="idprecio">
+                            </div>
+                            <div class="mb-3">
+                                <label for="idstock" class="form-label">Stock</label>
+                                <input type="number" class="form-control" id="idstock">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                Cancelar
+                            </button>
+                            <button type="submit" class="btn btn-success" id="btnCreaProducto" onclick="crearProducto()">
+                                Enviar Información
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!--Footer-->
+        <div class="b-example-divider"></div>
+        <div class="container">
+            <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+            <div class="col-md-4 d-flex align-items-center">  
+                © 2023 Copyright
+            </div>
+            <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+                <li class="ms-3"><a class="text-body-secondary" href="#"><i class="bi bi-instagram" ></i></a></li>
+                <li class="ms-3"><a class="text-body-secondary" href="#"><i class="bi bi-facebook"></i></a></li>
+                <li class="ms-3"><a class="text-body-secondary" href="#"><i class="bi bi-whatsapp"></i></a></li>
+            </ul>
+            </footer>
+        </div>
+
+        <!--Scripts-->
+        <script src="{% static 'bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'funciones.js' %}"></script>
+        <script src="{% static 'jquery.min.js' %}"></script>
+        <script src="{% static 'sweetalert2@11.js' %}"></script>
+        <script src="{% static 'validaciones_registro.js' %}"></script>
+        <script src="{% static 'validaciones_sesion.js' %}"></script>
+    </body>
+</html>
