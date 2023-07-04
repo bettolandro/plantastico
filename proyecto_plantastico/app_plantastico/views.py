@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from . models import Usuario
 from . models import Producto
-
+from . models import Carrito
+from . models import ProductoCarrito
 
 # Create your views here.
 def index(request):
@@ -151,3 +152,73 @@ def eliminarProducto(request):
     return render(request, "app_plantastico/muestraproductos.html",{
         'lista_productos': lista_productos
     })
+
+def almacenarCarrito(request):
+    if request.method == "POST":
+        print(request.POST)
+        usuario_email = request.POST.get("idcorreoCompra")
+        codigo_carrito = request.POST.get("codigoCarrito")
+        usuario = None
+
+        try:
+            usuario = Usuario.objects.get(correo=usuario_email) 
+        except Usuario.DoesNotExist:
+            pass
+
+        if usuario:
+            nuevo_carrito = Carrito(codigo_carrito=codigo_carrito, usuario=usuario)
+            nuevo_carrito.save()
+
+            context = {
+                'codigo_generado': codigo_carrito
+            }
+
+            return render(request, "app_plantastico/carrito2.html", context)
+        else:
+            # Usuario no válido, mostrar mensaje de error
+            return render(request, "app_plantastico/usuarioincorrecto.html")
+    else:
+        return render(request, "app_plantastico/carrito.html")
+
+def seleccionarProductos(request):
+    
+    if request.method == "POST":
+        print(request.POST)
+        id_carrito = request.POST.get("codigoCarrito")
+        id_producto = request.POST.get("codigoProducto")
+        cantidad_producto = request.POST.get("cantidadProducto")
+        
+        carrito = Carrito.objects.get(codigo_carrito=id_carrito) 
+
+        try:
+            producto = Producto.objects.get(codigo=id_producto) 
+        except Producto.DoesNotExist:
+            producto = None
+
+        if producto:
+            # Crear el objeto ProductoCarrito
+            nueva_compra = ProductoCarrito(
+                codigo_carrito=carrito,
+                codigo_producto=producto,
+                cantidad_producto=cantidad_producto
+            )
+            nueva_compra.save()
+            
+            context = {
+                'codigo_generado': id_carrito,
+            }
+            
+            return render(request, "app_plantastico/carrito2.html", context)
+        else:
+            # mensaje de error
+            return render(request, "app_plantastico/carrito.html")
+    else:
+        return render(request, "app_plantastico/index.html")
+
+def comprarProductos(request):
+    lista_productos = Producto.objects.all()
+    return render(request, "app_plantastico/carrito2.html", {"lista_productos": lista_productos})     
+    
+def comprasRealizadas(request):
+    lista_compras = ProductoCarrito.objects.all()
+    return render(request, "app_plantastico/comprasrealizadas.html", {"lista_compras": lista_compras})     

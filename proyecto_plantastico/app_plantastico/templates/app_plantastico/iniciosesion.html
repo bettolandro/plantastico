@@ -50,7 +50,7 @@
                         style="margin-right: 2%;">
                             <i class="bi bi-person-circle"></i> Hola @usuario!
                         </a>
-                        <!--API creación de producto-->
+                        <!--Creación de producto-->
                         <a type="button" href="{% url 'registrarproducto' %}" class="btn btn-outline-success"
                         style="margin-right: 2%;">
                             <i class="bi bi-bag-plus-fill"></i> Ingresar nuevo producto
@@ -64,12 +64,17 @@
         </div>
 
         <!--Datos del usuario-->
-        <br>
-        <div class="container mt-4">
-            <div class="row">
+        
+        <div class="container mt-4 justify-content-center"  >
+            <div class="modal-header">
+                <h2>Perfil de usuario</h2>
+            </div>
+            <br>
+            <div class="row mx-auto" >
+                <div class="col"></div>
                 <div class="col-md-3">
                     <!-- Aquí puedes colocar una imagen de perfil -->
-                    <img src="ruta_de_la_imagen" alt="Imagen de perfil" class="img-fluid">
+                    <img src="{% static 'assets/user.png' %}"  alt="Imagen de perfil" class="img-fluid">
                 </div>
                 <div class="col-md-4">
                     <!-- Aquí puedes mostrar la información del usuario -->
@@ -77,21 +82,20 @@
                     <p>Correo electrónico: correo@example.com</p>
                     <p>Fecha de nacimiento: 01/01/1990</p>
                     <p>Ubicación: Santiago, Chile</p>
-                </div>
-                <div class="col-md-2">
-                    <button type="button" id="btn_listarProducto" class="btn btn-success mx-auto d-block" >
-                    Editar perfil
+                    <button type="button" id="btn_listarProducto" class="btn btn-success d-block" >
+                        Editar perfil
                     </button>
                 </div>
+                <div class="col"></div>
             </div>
         </div>
 
-        <!--API listar producto-->
+        <!--Productos registrados-->
         <br>
         <div class="formulario" id="div_productos">
             <div class="mb-3" style="text-align: center;">
                 <a href="{% url 'muestraproductos' %}" id="btn_index" class="btn btn-success ">
-                    Lista de productos creados
+                    Editar productos
                 </a>
             </div>  
             <div>

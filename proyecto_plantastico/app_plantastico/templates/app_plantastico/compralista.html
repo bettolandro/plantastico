@@ -64,10 +64,11 @@
         <!--API compras del usuario-->
         <br>
         <div class="formulario" id="div_listaCompras">
-            <div>
-                <button type="button" id="btn_listarCompra" class="btn btn-success mx-auto d-block" onclick="listarCompra()">
+            <div class="mb-3">
+                <a type="button" href="{% url 'comprasrealizadas' %}" class="btn btn-success"
+                style="margin-right: 2%;">
                     Ver compras realizadas
-                </button>
+                </a>
             </div>
             <div>
                 <br>

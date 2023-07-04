@@ -1,0 +1,127 @@
+{% load static %}
+{% load bootstrap4 %}
+
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link href="{% static 'bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'style.css' %}" rel="stylesheet">
+        <link href="{% static 'bootstrap-icons.css' %}" rel="stylesheet">
+        <title>Carrito - Plantástico</title>
+        <link rel="icon" href="{% static 'assets/logo.png' %}" type="image/x-icon">
+    </head>
+
+    <body>     
+        <!--Navbar-->
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'index' %}"><h3><img src="{% static 'assets/logo.png' %}" alt="Logo" class="tamannio_logo">Plantástico</h3></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="donacion">Donaciones</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="..." role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Productos
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="plantas">Plantas</a></li>
+                                <li><a class="dropdown-item" href="maceteros">Maceteros</a></li>
+                                <li><a class="dropdown-item" href="accesorios">Accesorios</a></li>
+                                <li><a class="dropdown-item" href="productos">Ver todo</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <!--Cerrar Sesión-->
+                        <a href="{% url 'index' %}" class="btn"><h3><i class="bi bi-door-closed"></i></h3></a>
+                        <br>
+                        <!--Carrito de compras-->
+                        <a href="carrito" class="btn"><h3><i class="bi bi-cart3"></i></h3></a>
+                        <br>  
+                        <!--Inicio de sesión-->  
+                        <button type="button" class="btn btn-outline-success" onclick="window.location.href = 'iniciosesion';" style="margin-right: 2%;">
+                            <i class="bi bi-person-circle"></i> Hola @usuario!
+                        </button>
+                        
+                        <!--Creación de producto-->
+                        <a type="button" href="{% url 'registrarproducto' %}" class="btn btn-outline-success"
+                        style="margin-right: 2%;">
+                            <i class="bi bi-bag-plus-fill"></i> Ingresar nuevo producto
+                        </a>
+                    </form>
+                </div>
+            </div>  
+        </nav>  
+
+        <br>
+        <h2 style="margin-left: 2%;"> Selecciona los productos:</h2>
+        
+
+            
+        <!--API Almacenaproducto-->
+        <br>
+        <div>
+            <div class="formulario" id="div_compra">
+                <div class="modal-body">
+                    <br>
+                    <form action="{% url 'seleccionarproductos' %}" method="post">
+                        {% csrf_token %}     
+                        <div class="mb-3">
+                            <label for="codigoCarrito" class="form-label">Código del carrito</label>
+                            <input type="text" readonly class="form-control" id="codigoCarrito" name="codigoCarrito" value="{{ codigo_generado }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="codigoProducto" class="form-label">Código del producto</label>
+                            <input type="text" class="form-control" id="codigoProducto" name="codigoProducto">
+                        </div>
+                        <div class="mb-3">
+                            <label for="cantidadProducto" class="form-label">Cantidad</label>
+                            <input type="number" class="form-control" id="cantidadProducto" name="cantidadProducto">
+                        </div>
+                        <button type="submit" class="btn btn-success">
+                            Agregar al carro 
+                        </button>               
+                    </form>    
+                </div>
+            </div>
+          </div>
+
+        <!--Finalizar compra-->
+        <div class="mb-3">
+            <button type="button" id="btn_generaCodigo" class="btn btn-success mx-auto d-block" onclick="window.location.href = 'compralista';">
+            Finalizar compra
+            </button>
+        </div>
+        <br>
+    
+        <!--Footer-->
+        <div class="b-example-divider"></div>
+        <div class="container">
+            <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+            <div class="col-md-4 d-flex align-items-center">  
+                © 2023 Copyright
+            </div>
+            <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+                <li class="ms-3"><a class="text-body-secondary" href="#"><i class="bi bi-instagram" ></i></a></li>
+                <li class="ms-3"><a class="text-body-secondary" href="#"><i class="bi bi-facebook"></i></a></li>
+                <li class="ms-3"><a class="text-body-secondary" href="#"><i class="bi bi-whatsapp"></i></a></li>
+            </ul>
+            </footer>
+        </div>
+
+        <!--Scripts-->
+        <script src="{% static 'bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'funciones.js' %}"></script>
+        <script src="{% static 'jquery.min.js' %}"></script>
+        <script src="{% static 'sweetalert2@11.js' %}"></script>
+        <script src="{% static 'validaciones_registro.js' %}"></script>
+        <script src="{% static 'validaciones_sesion.js' %}"></script>
+    </body>
+</html>

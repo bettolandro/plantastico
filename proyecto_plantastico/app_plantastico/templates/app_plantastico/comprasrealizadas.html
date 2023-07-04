@@ -1,0 +1,118 @@
+{% load static %}
+{% load bootstrap4 %}
+
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link href="{% static 'bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'style.css' %}" rel="stylesheet">
+        <link href="{% static 'bootstrap-icons.css' %}" rel="stylesheet">
+        <title>Productos - Plantástico</title>
+        <link rel="icon" href="{% static 'assets/logo.png' %}" type="image/x-icon">
+    </head>
+
+    <body>     
+        <!--Navbar-->    
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{% url 'index' %}"><h3><img src="{% static 'assets/logo.png' %}" alt="Logo" class="tamannio_logo">Plantástico</h3></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="donacion">Donaciones</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="..." role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Productos
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="plantas">Plantas</a></li>
+                                <li><a class="dropdown-item" href="maceteros">Maceteros</a></li>
+                                <li><a class="dropdown-item" href="accesorios">Accesorios</a></li>
+                                <li><a class="dropdown-item" href="productos">Ver todo</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <!--Cerrar Sesión-->
+                        <a href="{% url 'index' %}" class="btn"><h3><i class="bi bi-door-closed"></i></h3></a>
+                        <br>
+                        <!--Carrito de compras-->
+                        <a href="carrito" class="btn"><h3><i class="bi bi-cart3"></i></h3></a>
+                        <br>  
+                        <!--Inicio de sesión-->  
+                        <a type="button" href="iniciosesion" class="btn btn-outline-success"
+                        style="margin-right: 2%;">
+                            <i class="bi bi-person-circle"></i> Hola @usuario!
+                        </a>
+                        <!--API creación de producto-->
+                        <a type="button" href="{% url 'registrarproducto' %}" class="btn btn-outline-success"
+                        style="margin-right: 2%;">
+                            <i class="bi bi-bag-plus-fill"></i> Ingresar nuevo producto
+                        </a>
+                    </form>
+                </div>
+            </div>  
+        </nav>    
+        <div>
+            <br>
+        </div>
+
+        
+
+        <!--Lista de productos-->
+        <br>
+        <div class="formulario" id="div_productos"> 
+            <br>
+            <div class="row row-cols-1 row-cols-md-3 g-4">  
+                {% for productocarrito in lista_compras  %}
+                    <div class="col">
+                        <div class="card h-100" style="width: 18rem;">
+                            <img src="{% static 'assets/productodefault.png' %}" class="card-img-top" alt="imagen por defecto" style="padding: 50px;" >
+                            <div class="card-body">
+                                <p class="card-text">Código: {{productocarrito.codigo_carrito}}</p>
+                                <h5 class="card-title">Codigo producto: {{productocarrito.codigo_producto}}</h5>
+                                <p class="card-text">Cantidad: {{productocarrito.cantidad_producto}}</p>
+                            </div>
+                                 
+                        </div>
+                    </div>
+
+                    <br>
+                {% empty %}
+                <h1>No hay compras registradas</h1>    
+                {% endfor %}               
+            </div>
+        </div>
+
+        <!--Footer-->
+        <div class="b-example-divider"></div>
+        <div class="container">
+            <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+            <div class="col-md-4 d-flex align-items-center">  
+                © 2023 Copyright
+            </div>
+            <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+                <li class="ms-3"><a class="text-body-secondary" href="#"><i class="bi bi-instagram" ></i></a></li>
+                <li class="ms-3"><a class="text-body-secondary" href="#"><i class="bi bi-facebook"></i></a></li>
+                <li class="ms-3"><a class="text-body-secondary" href="#"><i class="bi bi-whatsapp"></i></a></li>
+            </ul>
+            </footer>
+        </div>
+
+        <!--Scripts-->
+        <script src="{% static 'bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'funciones.js' %}"></script>
+        <script src="{% static 'jquery.min.js' %}"></script>
+        <script src="{% static 'sweetalert2@11.js' %}"></script>
+        <script src="{% static 'validaciones_registro.js' %}"></script>
+        <script src="{% static 'validaciones_sesion.js' %}"></script>
+        <script src="{% static 'jquery-3.3.1.slim.min.js' %}"></script>
+        <script src="{% static 'popper.min.js' %}"></script>
+    </body>
+</html>
