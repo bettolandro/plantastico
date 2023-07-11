@@ -1,4 +1,4 @@
-<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>220</x><y>60</y><w>210</w><h>130</h></coordinates><panel_attributes>Usuario
+<diagram program="umletino" version="15.1"><zoom_level>16</zoom_level><element><id>UMLClass</id><coordinates><x>128</x><y>100</y><w>336</w><h>208</h></coordinates><panel_attributes>Usuario
 --
 -correo: String
 -clave: String
@@ -6,7 +6,7 @@
 -Apellido: String
 --
 +almacenar()
-+iniciarSesion()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>580</x><y>70</y><w>210</w><h>160</h></coordinates><panel_attributes>Producto
++iniciarSesion()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>704</x><y>116</y><w>336</w><h>256</h></coordinates><panel_attributes>Producto
 --
 -codigo: String
 -nomproducto: String
@@ -16,7 +16,7 @@
 --
 +almacenarProdcuto()
 +modificarProducto()
-+eliminarProducto()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>270</x><y>270</y><w>210</w><h>100</h></coordinates><panel_attributes>Carrito
++eliminarProducto()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>208</x><y>436</y><w>336</w><h>160</h></coordinates><panel_attributes>Carrito
 --
 codigo_carrito: String
 usuario: String
@@ -24,16 +24,16 @@ usuario: String
 +almacenarCarrito()
 +seleccionarProdcutos()
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>580</x><y>360</y><w>210</w><h>110</h></coordinates><panel_attributes>ProductoCarrito
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>704</x><y>580</y><w>336</w><h>176</h></coordinates><panel_attributes>ProductoCarrito
 --
 id_procar: int
 codigo_carrito: String
 codigo_prodcuto: String
 cantidad_producto: int
---</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>330</x><y>180</y><w>30</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>470</x><y>310</y><w>180</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;160;10;160;50</additional_attributes></element><element><id>Relation</id><coordinates><x>720</x><y>220</y><w>30</w><h>160</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;140</additional_attributes></element><element><id>Text</id><coordinates><x>350</x><y>190</y><w>100</w><h>70</h></coordinates><panel_attributes>1
-style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>350</x><y>240</y><w>100</w><h>70</h></coordinates><panel_attributes>0..*
-style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>630</x><y>330</y><w>100</w><h>70</h></coordinates><panel_attributes>0..*
-style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>490</x><y>290</y><w>100</w><h>70</h></coordinates><panel_attributes>1
-style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>740</x><y>230</y><w>100</w><h>70</h></coordinates><panel_attributes>1
-style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>740</x><y>340</y><w>100</w><h>70</h></coordinates><panel_attributes>0..*
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>304</x><y>292</y><w>48</w><h>176</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>528</x><y>500</y><w>288</w><h>112</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;160;10;160;50</additional_attributes></element><element><id>Relation</id><coordinates><x>928</x><y>356</y><w>48</w><h>256</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;140</additional_attributes></element><element><id>Text</id><coordinates><x>336</x><y>308</y><w>160</w><h>112</h></coordinates><panel_attributes>1
+style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>336</x><y>388</y><w>160</w><h>112</h></coordinates><panel_attributes>0..*
+style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>784</x><y>532</y><w>160</w><h>112</h></coordinates><panel_attributes>0..*
+style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>560</x><y>468</y><w>160</w><h>112</h></coordinates><panel_attributes>1
+style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>960</x><y>372</y><w>160</w><h>112</h></coordinates><panel_attributes>1
+style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>960</x><y>548</y><w>160</w><h>112</h></coordinates><panel_attributes>0..*
 style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element></diagram>
