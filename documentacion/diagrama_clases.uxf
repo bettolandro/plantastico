@@ -35,5 +35,5 @@ style=wordwrap</panel_attributes><additional_attributes></additional_attributes>
 style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>630</x><y>330</y><w>100</w><h>70</h></coordinates><panel_attributes>0..*
 style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>490</x><y>290</y><w>100</w><h>70</h></coordinates><panel_attributes>1
 style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>740</x><y>230</y><w>100</w><h>70</h></coordinates><panel_attributes>1
-style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>740</x><y>340</y><w>100</w><h>70</h></coordinates><panel_attributes>1
+style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>740</x><y>340</y><w>100</w><h>70</h></coordinates><panel_attributes>0..*
 style=wordwrap</panel_attributes><additional_attributes></additional_attributes></element></diagram>
